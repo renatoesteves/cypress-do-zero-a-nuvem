@@ -135,7 +135,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       })
   })
 
-  it.only('seleciona um arquivo simulando um drag-and-drop', () => {
+  it('seleciona um arquivo simulando um drag-and-drop', () => {
     cy.get('#file-upload')
       .selectFile('cypress/fixtures/example.json', { action: 'drag-drop' })
       .should(input => {
