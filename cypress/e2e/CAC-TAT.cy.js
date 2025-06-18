@@ -10,6 +10,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('preenche os campos obrigatórios e envia o formulário', () => {
+    cy.clock()
     const longText = Cypress._.repeat('abcdefghijklmnopqrsvwxyz', 10)
 
     //Acões 
@@ -21,15 +22,24 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
     //Resultados
     cy.get('.success').should('be.visible')
+
+    cy.tick(3000)
+
+    cy.get('.success').should('not.be.visible')
   })
 
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', () => {
+    cy.clock()
     cy.get('#firstName').type('Renato')
     cy.get('#lastName').type('Carvalho Esteves')
     cy.get('#email').type('recarvalhoe@gmail,com')
     cy.get('#open-text-area').type('Teste')
     cy.contains('button', 'Enviar').click()
     cy.get('.error').should('be.visible')
+
+    cy.tick(3000)
+
+    cy.get('.error').should('not.be.visible')
   })
 
   it('campo telefone continua vazio quando preenchido com um valor não númerico', () => {
@@ -73,11 +83,15 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   })
 
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
+    cy.clock()
     //Ação
     cy.contains('button', 'Enviar').click()
 
     //Resultado esperado...
     cy.get('.error').should('be.visible')
+
+    cy.tick(3000)
+    cy.get('.error').should('not.be.visible')
   })
 
   it('envia o formuário com sucesso usando um comando customizado', () => {
