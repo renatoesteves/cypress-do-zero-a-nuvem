@@ -3,6 +3,7 @@ const { defineConfig } = require('cypress')
 module.exports = defineConfig({
   viewportHeight: 900,
   viewportWidth: 1280,
+  projectId: "4e6x4p",
   e2e: {
   },
   // video: true,
