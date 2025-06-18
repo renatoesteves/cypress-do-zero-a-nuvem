@@ -200,7 +200,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('have.value', 'Um texto qualquer')
   })
 
-  it.only('faz uma requisição HTTP', () => {
+  it('faz uma requisição HTTP', () => {
     cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
       .as('getRequest')
       .its('status')
